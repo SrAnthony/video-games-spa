@@ -20,7 +20,7 @@ export default Header
 
 const Container = styled.div`
   color: white;
-  margin-top: 100px;
+  margin: 100px 0;
 `
 
 const MenuItem = styled.button`
