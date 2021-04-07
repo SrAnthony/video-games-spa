@@ -38,6 +38,13 @@ const Container = styled.div`
   max-height: 180px;
   overflow: hidden;
   display: flex;
+  position: relative;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    max-height: unset;
+    height: unset;
+  }
 `
 
 const Rating = styled.div`
@@ -52,6 +59,16 @@ const Rating = styled.div`
   align-items: center;
   align-self: center;
   margin-right: 25px;
+
+  @media (max-width: 700px) {
+    height: 35px;
+    min-width: 35px;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px 15px 0 0;
+  }
 `
 
 const GameImage = styled.div`

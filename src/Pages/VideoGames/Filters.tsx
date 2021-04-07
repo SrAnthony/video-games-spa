@@ -28,12 +28,6 @@ const Filters: React.FC = () => {
 
 export default Filters
 
-const ClearButtonContainer = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-`
-
 const ResponsiveContent = styled.div`
   flex: 1;
   display: flex;
@@ -41,7 +35,7 @@ const ResponsiveContent = styled.div`
   justify-content: flex-end;
   flex-wrap: wrap;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1024px) and (min-width: 700px) {
     flex-wrap: nowrap;
 
     & > div {
