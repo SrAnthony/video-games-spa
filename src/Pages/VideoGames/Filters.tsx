@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Input from '../../Components/Input'
 import OrderByInput from '../../Components/OrderByInput'
 import ScoreInput from '../../Components/ScoreInput'
+import Button from '../../Components/Button'
 
 const Filters: React.FC = () => {
   
@@ -15,6 +16,10 @@ const Filters: React.FC = () => {
       <ScoreInput />
       
       <OrderByInput />
+      
+      <Button>
+        Clear
+      </Button>
     </Container>
   )
 }
@@ -24,7 +29,14 @@ export default Filters
 const Container = styled.div`
   background-color: #0e1a2b;
   width: 300px;
+  min-width: 300px;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    align-self: flex-end;
+  }
 
   h3 {
     font-size: 24px;

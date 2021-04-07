@@ -10,8 +10,11 @@ html {
 
 body {
   margin: 0;
-  /*font-family: 'Montserrat', sans-serif;*/
   font-family: 'Mulish', sans-serif;
   background: rgb(8, 18, 33);
   background: linear-gradient(180deg, rgba(8, 18, 33, 1) 0%, rgba(3, 8, 15, 1) 100%);
+}
+
+h1, h2, h3, label, button {
+  font-family: 'Montserrat', sans-serif;
 }
