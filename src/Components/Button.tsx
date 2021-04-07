@@ -4,7 +4,8 @@ const Button = styled.button`
   background-color: #5692e8;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 0 20px;
+  height: 40px;
 `
 
 export default Button

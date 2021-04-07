@@ -21,7 +21,8 @@ const Input: React.FC<InputProps> = ({ label, ...props }) => {
 export default Input
 
 export const InputContainer = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  width: 100%;
 
   label {
     color: white;

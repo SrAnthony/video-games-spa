@@ -19,4 +19,8 @@ export default VideoGames
 const Container = styled.div`
   display: flex;
   align-items: flex-start;
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
 `

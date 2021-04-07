@@ -23,4 +23,8 @@ export default GamesList
 const Container = styled.div`
   margin-left: 30px;
   width: 100%;
+
+  @media (max-width: 1024px) {
+    margin: 0;
+  }
 `

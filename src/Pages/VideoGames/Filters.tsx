@@ -13,18 +13,42 @@ const Filters: React.FC = () => {
       
       <Input label="Name (contains)" placeholder="Text string" />
       
-      <ScoreInput />
-      
-      <OrderByInput />
-      
-      <Button>
-        Clear
-      </Button>
+      <ResponsiveContent>
+        <ScoreInput />
+        
+        <OrderByInput />
+        
+        <Button>
+          Clear
+        </Button>
+      </ResponsiveContent>
     </Container>
   )
 }
 
 export default Filters
+
+const ClearButtonContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const ResponsiveContent = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  @media (max-width: 1024px) {
+    flex-wrap: nowrap;
+
+    & > div {
+      margin-right: 15px;
+    }
+  }
+`
 
 const Container = styled.div`
   background-color: #0e1a2b;
@@ -32,10 +56,14 @@ const Container = styled.div`
   min-width: 300px;
   padding: 25px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 30px;
 
-  button {
-    align-self: flex-end;
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin: 0 0 100px 0;
+    position: static;
   }
 
   h3 {
