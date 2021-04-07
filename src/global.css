@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Mulish:wght@500&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  /*font-family: 'Montserrat', sans-serif;*/
+  font-family: 'Mulish', sans-serif;
+  background: rgb(8, 18, 33);
+  background: linear-gradient(180deg, rgba(8, 18, 33, 1) 0%, rgba(3, 8, 15, 1) 100%);
+}
