@@ -67,7 +67,7 @@ const ResponsiveContent = styled.div`
 `
 
 const Container = styled.div`
-  background-color: #0e1a2b;
+  background-color: ${p => p.theme.colors.content_background};
   width: 300px;
   min-width: 300px;
   padding: 25px;

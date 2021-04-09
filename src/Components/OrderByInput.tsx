@@ -60,7 +60,7 @@ const Row = styled.div`
 `
 
 const DirectionArrowContainer = styled.div<{ $reverse: boolean }>`
-  background-color: #5692e8;
+  background-color: ${p => p.theme.colors.accent_blue};
   height: 40px;
   width: 40px;
   display: flex;

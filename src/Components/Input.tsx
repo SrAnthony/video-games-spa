@@ -29,8 +29,8 @@ export const InputContainer = styled.div`
   }
 
   input, select {
-    background-color: #182c47;
-    color: #c1d1e8;
+    background-color: ${p => p.theme.colors.input_background};
+    color: ${p => p.theme.colors.input_background};
     border: none;
     padding: 0 10px;
     height: 40px;

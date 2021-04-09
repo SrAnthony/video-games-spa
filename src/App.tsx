@@ -2,23 +2,27 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Contact from './Pages/Contact/Contact'
 import VideoGames from './Pages/VideoGames/VideoGames'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import Header from './Components/Header'
+import Theme from './Utils/Theme'
+
 import './global.css'
 
 const App = () => {
   
   return (
-    <Container>
-      <Content>
-        <Header />
-        
-        <Routes>
-          <Route path="/" element={<VideoGames />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Content>
-    </Container>
+    <ThemeProvider theme={Theme}>
+      <Container>
+        <Content>
+          <Header />
+          
+          <Routes>
+            <Route path="/" element={<VideoGames />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Content>
+      </Container>
+    </ThemeProvider>
   )
 }
 
@@ -32,8 +36,4 @@ const Content = styled.div`
   max-width: 1500px;
   margin: auto;
   padding: 0 30px;
-
-  //@media (max-width: 1024px) {
-  //  padding: 0;
-  //}
 `

@@ -4,6 +4,7 @@ import { SkeletonTheme } from 'react-loading-skeleton'
 import styled from 'styled-components'
 import GameItem from './GameItem'
 import useGetGames from './useGetGames'
+import Theme from '../../Utils/Theme'
 
 type GamesListProps = {
   filters: FiltersStateType,
@@ -14,7 +15,7 @@ const GamesList: React.FC<GamesListProps> = ({ filters }) => {
   
   return (
     <Container>
-      <SkeletonTheme color="rgb(8, 18, 33)" highlightColor="#0e1a2b">
+      <SkeletonTheme color="rgb(8, 18, 33)" highlightColor={Theme.colors.content_background}>
         {games.length === 0 && loading && [1, 2, 3, 4, 5].map(i => (
           <GameItem key={`loading-${i}`} />
         ))}

@@ -41,7 +41,7 @@ const GameItem: React.FC<{ game?: GameType }> = ({ game }) => {
 export default GameItem
 
 const Container = styled.div`
-  background-color: #0e1a2b;
+  background-color: ${p => p.theme.colors.content_background};
   margin-bottom: 15px;
   height: 180px;
   max-height: 180px;
@@ -58,7 +58,7 @@ const Container = styled.div`
 
 const Rating = styled.div`
   border-radius: 50%;
-  background-color: #5692e8;
+  background-color: ${p => p.theme.colors.accent_blue};
   color: white;
   font-size: 20px;
   min-width: 50px;
@@ -88,7 +88,7 @@ const GameImage = styled.div`
 
 const Content = styled.div`
   padding: 25px;
-  color: #c1d1e8;
+  color: ${p => p.theme.colors.text_color};
   height: 155px; // 180px container height - 25px container padding
   max-height: 155px;
   overflow: hidden;
