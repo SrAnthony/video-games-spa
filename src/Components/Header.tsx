@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Header: React.FC = () => {
   
   return (
     <Container>
-      <MenuItem to="/">
+      <MenuItem to="/" title="VIDEO" activeClassName="active" end>
         VIDEO GAMES
       </MenuItem>
       
-      <MenuItem to="/contact">
+      <MenuItem to="/contact" title="CONTACT" activeClassName="active" end>
         CONTACT
       </MenuItem>
     </Container>
@@ -30,11 +30,24 @@ const Container = styled.div`
   }
 `
 
-const MenuItem = styled(Link)`
+const MenuItem = styled(NavLink)`
   text-decoration: none;
   font-size: 42px;
   color: white;
   margin-left: 100px;
+  position: relative;
+
+  &.active::before {
+    content: attr(title);
+    position: absolute;
+    left: -35px;
+    top: -35px;
+    font-size: 60px;
+    font-weight: 600;
+    opacity: 0.15;
+    color: ${p => p.theme.colors.accent_blue};
+    white-space: nowrap;
+  }
 
   @media (max-width: 1024px) {
     margin-bottom: 30px;
