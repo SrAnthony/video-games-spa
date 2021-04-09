@@ -15,6 +15,7 @@ export type FiltersActionType =
   | { type: 'set_minimum_rating', payload: FiltersStateType['minimum_rating'] }
   | { type: 'set_order_by', payload: FiltersStateType['order_by'] }
   | { type: 'set_order_direction', payload: FiltersStateType['order_direction'] }
+  | { type: 'clear' }
 
 export const initial_values: FiltersStateType = {
   name: '',
@@ -24,6 +25,10 @@ export const initial_values: FiltersStateType = {
 }
 
 const FiltersReducer: Reducer<FiltersStateType, FiltersActionType> = (state, action) => {
+  // I would use a switch if I had more actions to check
+  if (action.type === 'clear')
+    return initial_values
+  
   // Just create all sets
   if (action.type.includes('set_') && 'payload' in action) {
     const key = action.type.split('set_')[1]

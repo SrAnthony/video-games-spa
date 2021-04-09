@@ -6,6 +6,7 @@ const Button = styled.button`
   color: white;
   padding: 0 20px;
   height: 40px;
+  cursor: pointer;
 `
 
 export default Button

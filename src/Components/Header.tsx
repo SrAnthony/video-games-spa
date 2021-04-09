@@ -21,7 +21,7 @@ export default Header
 
 const Container = styled.div`
   color: white;
-  margin: 100px 0;
+  padding: 100px 0;
 
   @media (max-width: 1024px) {
     display: flex;

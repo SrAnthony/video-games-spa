@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
+import React, { memo } from 'react'
 import { InputContainer } from './Input'
-import { FiltersActionType, OrderByType } from '../Pages/VideoGames/FiltersReducer'
+import { FiltersActionType, OrderByType, OrderDirectionType } from '../Pages/VideoGames/FiltersReducer'
 import styled, { css } from 'styled-components'
 import arrow_up from '../Assets/Icons/arrow-up.svg'
 
 type OrderByInputProps = {
-  dispatch: React.Dispatch<FiltersActionType>
+  dispatch: React.Dispatch<FiltersActionType>,
+  order_by: OrderByType,
+  order_direction: OrderDirectionType,
 }
 
-const OrderByInput: React.FC<OrderByInputProps> = ({ dispatch }) => {
-  const [order, setOrder] = useState<'ASC' | 'DESC'>('ASC')
-  
+const OrderByInput: React.FC<OrderByInputProps> = ({ dispatch, order_by, order_direction }) => {
   const onOrderDirectionChange = () => {
-    const new_order = order === 'DESC' ? 'ASC' : 'DESC'
-    setOrder(new_order)
+    const new_order = order_direction === 'DESC' ? 'ASC' : 'DESC'
     dispatch({ type: 'set_order_direction', payload: new_order })
   }
   
@@ -26,7 +25,7 @@ const OrderByInput: React.FC<OrderByInputProps> = ({ dispatch }) => {
       <Row>
         <DirectionArrowContainer
           title="Change order"
-          $reverse={order === 'DESC'}
+          $reverse={order_direction === 'DESC'}
           onClick={onOrderDirectionChange}
         >
           {/* Using import and img because this project has only one icon. I would use a icon pack in a larger
@@ -35,6 +34,7 @@ const OrderByInput: React.FC<OrderByInputProps> = ({ dispatch }) => {
         </DirectionArrowContainer>
         
         <select
+          value={order_by}
           onChange={e => dispatch({ type: 'set_order_by', payload: e.target.value as OrderByType })}
         >
           <option value="release_date">
@@ -52,7 +52,7 @@ const OrderByInput: React.FC<OrderByInputProps> = ({ dispatch }) => {
   )
 }
 
-export default OrderByInput
+export default memo(OrderByInput)
 
 const Row = styled.div`
   display: flex;

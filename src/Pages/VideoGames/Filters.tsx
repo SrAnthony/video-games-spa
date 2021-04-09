@@ -19,6 +19,7 @@ const Filters: React.FC<FiltersProps> = ({ dispatch, filters }) => {
       <Input
         label="Name (contains)"
         placeholder="Text string"
+        value={filters.name}
         onChange={e => dispatch({ type: 'set_name', payload: e.target.value })}
       />
       
@@ -26,15 +27,20 @@ const Filters: React.FC<FiltersProps> = ({ dispatch, filters }) => {
         <Input
           label="Minimum Score"
           placeholder="1 - 100"
+          value={filters.minimum_rating ? String(filters.minimum_rating) : ''}
           onChange={e => dispatch({ type: 'set_minimum_rating', payload: e.target.valueAsNumber })}
           type="number"
           max={100}
           min={1}
         />
         
-        <OrderByInput dispatch={dispatch} />
+        <OrderByInput
+          dispatch={dispatch}
+          order_by={filters.order_by}
+          order_direction={filters.order_direction}
+        />
         
-        <Button>
+        <Button onClick={() => dispatch({ type: 'clear' })}>
           Clear
         </Button>
       </ResponsiveContent>
