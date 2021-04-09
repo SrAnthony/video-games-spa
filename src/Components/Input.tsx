@@ -28,12 +28,12 @@ export const InputContainer = styled.div`
     color: white;
   }
 
-  input, select {
+  input, select, textarea {
     background-color: ${p => p.theme.colors.input_background};
     color: ${p => p.theme.colors.input_background};
     border: none;
     padding: 0 10px;
-    height: 40px;
+    min-height: 40px;
     margin-top: 5px;
     width: 100%;
   }
