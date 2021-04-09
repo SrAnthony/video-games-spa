@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useReducer } from 'react'
+import FiltersReducer, { initial_values } from './FiltersReducer'
 import styled from 'styled-components'
 import Filters from './Filters'
 import GamesList from './GamesList'
 
 const VideoGames: React.FC = () => {
+  const [filters, dispatch] = useReducer(FiltersReducer, initial_values)
   
   return (
     <Container>
-      <Filters />
+      <Filters filters={filters} dispatch={dispatch} />
       
-      <GamesList />
+      <GamesList filters={filters} />
     </Container>
   )
 }

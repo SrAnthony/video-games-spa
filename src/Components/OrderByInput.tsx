@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
 import { InputContainer } from './Input'
+import { FiltersActionType, OrderByType } from '../Pages/VideoGames/FiltersReducer'
 import styled, { css } from 'styled-components'
 import arrow_up from '../Assets/Icons/arrow-up.svg'
 
-const OrderByInput: React.FC = () => {
+type OrderByInputProps = {
+  dispatch: React.Dispatch<FiltersActionType>
+}
+
+const OrderByInput: React.FC<OrderByInputProps> = ({ dispatch }) => {
   const [order, setOrder] = useState<'ASC' | 'DESC'>('ASC')
+  
+  const onOrderDirectionChange = () => {
+    const new_order = order === 'DESC' ? 'ASC' : 'DESC'
+    setOrder(new_order)
+    dispatch({ type: 'set_order_direction', payload: new_order })
+  }
   
   return (
     <InputContainer>
@@ -16,21 +27,23 @@ const OrderByInput: React.FC = () => {
         <DirectionArrowContainer
           title="Change order"
           $reverse={order === 'DESC'}
-          onClick={() => setOrder(order === 'DESC' ? 'ASC' : 'DESC')}
+          onClick={onOrderDirectionChange}
         >
           {/* Using import and img because this project has only one icon. I would use a icon pack in a larger
            project. */}
           <img src={arrow_up} />
         </DirectionArrowContainer>
         
-        <select>
-          <option>
+        <select
+          onChange={e => dispatch({ type: 'set_order_by', payload: e.target.value as OrderByType })}
+        >
+          <option value="release_date">
             Release Date
           </option>
-          <option>
+          <option value="score">
             Score
           </option>
-          <option>
+          <option value="name">
             Name
           </option>
         </select>

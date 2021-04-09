@@ -1,22 +1,38 @@
 import React from 'react'
+import { FiltersActionType, FiltersStateType } from './FiltersReducer'
 import styled from 'styled-components'
 import Input from '../../Components/Input'
 import OrderByInput from '../../Components/OrderByInput'
-import ScoreInput from '../../Components/ScoreInput'
 import Button from '../../Components/Button'
 
-const Filters: React.FC = () => {
+type FiltersProps = {
+  filters: FiltersStateType,
+  dispatch: React.Dispatch<FiltersActionType>
+}
+
+const Filters: React.FC<FiltersProps> = ({ dispatch, filters }) => {
   
   return (
     <Container>
       <h3>Filter Results</h3>
       
-      <Input label="Name (contains)" placeholder="Text string" />
+      <Input
+        label="Name (contains)"
+        placeholder="Text string"
+        onChange={e => dispatch({ type: 'set_name', payload: e.target.value })}
+      />
       
       <ResponsiveContent>
-        <ScoreInput />
+        <Input
+          label="Minimum Score"
+          placeholder="1 - 100"
+          onChange={e => dispatch({ type: 'set_minimum_rating', payload: e.target.valueAsNumber })}
+          type="number"
+          max={100}
+          min={1}
+        />
         
-        <OrderByInput />
+        <OrderByInput dispatch={dispatch} />
         
         <Button>
           Clear

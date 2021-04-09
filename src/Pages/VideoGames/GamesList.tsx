@@ -1,17 +1,22 @@
 import React from 'react'
+import { FiltersStateType } from './FiltersReducer'
 import styled from 'styled-components'
 import GameItem from './GameItem'
 import useGetGames from './useGetGames'
 
-const GamesList: React.FC = () => {
-  const [{ data, loading, error }] = useGetGames()
+type GamesListProps = {
+  filters: FiltersStateType,
+}
+
+const GamesList: React.FC<GamesListProps> = ({ filters }) => {
+  const [games, loading, error] = useGetGames(filters)
   
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error!</p>
   
   return (
     <Container>
-      {data?.map(game => (
+      {games?.map(game => (
         <GameItem key={game.id} game={game} />
       ))}
     </Container>
