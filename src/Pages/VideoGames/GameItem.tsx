@@ -2,8 +2,9 @@ import React from 'react'
 import { GameType } from './useGetGames'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
+import Skeleton from 'react-loading-skeleton'
 
-const GameItem: React.FC<{ game: GameType }> = ({ game }) => {
+const GameItem: React.FC<{ game?: GameType }> = ({ game }) => {
   
   return (
     <Container>
@@ -11,20 +12,28 @@ const GameItem: React.FC<{ game: GameType }> = ({ game }) => {
       
       <Content>
         <h2>
-          {game.name}
+          {game?.name || <Skeleton width="20ch" />}
         </h2>
         <h3>
-          Release Date: {dayjs(game.first_release_date).format('DD/MM/YYYY')}
+          {game
+            ? `Release Date: ${dayjs(game.first_release_date).format('DD/MM/YYYY')}`
+            : <Skeleton width="22ch" />
+          }
         </h3>
         
         <div>
-          {game.summary}
+          {game
+            ? game.summary
+            : <Skeleton count={3} width="100%" />
+          }
         </div>
       </Content>
       
-      <Rating>
-        {Math.round(game.rating)}
-      </Rating>
+      {game && (
+        <Rating>
+          {Math.round(game.rating)}
+        </Rating>
+      )}
     </Container>
   )
 }
@@ -84,6 +93,7 @@ const Content = styled.div`
   max-height: 155px;
   overflow: hidden;
   flex: 1;
+  width: 100%;
 
   h2 {
     color: white;

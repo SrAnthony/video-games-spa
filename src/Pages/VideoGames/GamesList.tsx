@@ -1,5 +1,6 @@
 import React from 'react'
 import { FiltersStateType } from './FiltersReducer'
+import { SkeletonTheme } from 'react-loading-skeleton'
 import styled from 'styled-components'
 import GameItem from './GameItem'
 import useGetGames from './useGetGames'
@@ -9,16 +10,19 @@ type GamesListProps = {
 }
 
 const GamesList: React.FC<GamesListProps> = ({ filters }) => {
-  const [games, loading, error] = useGetGames(filters)
-  
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
+  const [games, loading] = useGetGames(filters)
   
   return (
     <Container>
-      {games?.map(game => (
-        <GameItem key={game.id} game={game} />
-      ))}
+      <SkeletonTheme color="rgb(8, 18, 33)" highlightColor="#0e1a2b">
+        {games.length === 0 && loading && [1, 2, 3, 4, 5].map(i => (
+          <GameItem key={`loading-${i}`} />
+        ))}
+        
+        {games.map(game => (
+          <GameItem key={game.id} game={game} />
+        ))}
+      </SkeletonTheme>
     </Container>
   )
 }

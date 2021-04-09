@@ -1,6 +1,6 @@
-import useAxios from 'axios-hooks'
-import { FiltersStateType } from './FiltersReducer'
 import { useMemo } from 'react'
+import { FiltersStateType } from './FiltersReducer'
+import useAxios from 'axios-hooks'
 
 export type GameType = {
   id: number,
@@ -11,7 +11,7 @@ export type GameType = {
 }
 
 const useGetGames = (filters: FiltersStateType) => {
-  const [{ data, loading, error }] = useAxios<GameType[]>(
+  const [{ data, loading }] = useAxios<GameType[]>(
     'https://public.connectnow.org.uk/applicant-test/',
   )
   
@@ -45,7 +45,7 @@ const useGetGames = (filters: FiltersStateType) => {
       })
   }, [data, filters])
   
-  return [games, loading, error] as const
+  return [games, loading] as const
 }
 
 export default useGetGames
